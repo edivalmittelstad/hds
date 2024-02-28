@@ -9,7 +9,6 @@ from database.connection import sync_session
 
 class BaseService:
   async def create(self, object_input):
-    print("BaseService")
     async with async_session() as session:
       try:
         session.add(object_input)

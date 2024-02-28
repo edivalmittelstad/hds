@@ -7,7 +7,8 @@ from fastapi import (
     status,
 )
 
-from database.models import Usuario
+from database.connection import async_session
+from database.models import Usuario, HD
 from .schemas import HDCreateInput, HDUpdateInput
 from .services import HDService
 from ..Auth.view import token_verify
@@ -17,7 +18,8 @@ hd_router = APIRouter(prefix="/hd")
 @hd_router.post("")
 async def create(input: HDCreateInput):
     try:
-        res = await HDService.create(input)
+        # res = await HDService.create(HD, input)
+        res = await HD.create(HD, async_session, input)
         return res
     except Exception as error:
         raise HTTPException(400, detail=str(error))

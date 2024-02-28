@@ -2,7 +2,7 @@
 # @name login 
 POST http://localhost:8000/auth/login
 Content-Type: application/json
-accept: application/json 
+accept: application/json
  
 {
   "email": "edivalmitt@gmail.com",
@@ -20,7 +20,7 @@ Authorization: Bearer {{TOKEN}}
 
 {
   "nome": "HD 1",
-  "email": "HD XLZ",
+  "descricao": "HD XLZ",
   "status": "True",
   "path" : "/home/edival/TRABALHO/"
 }
