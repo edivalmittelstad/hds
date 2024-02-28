@@ -1,0 +1,10 @@
+### Login ###
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+accept: application/json 
+ 
+{
+  "email": "edivalmitt@gmail.com",
+  "senha": "123"
+}
+

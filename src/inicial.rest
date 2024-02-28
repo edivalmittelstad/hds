@@ -1,0 +1,7 @@
+
+### Rota Inicial ###
+GET http://localhost:8000/
+
+
+### Teste DB ###
+GET http://localhost:8000/testedb 

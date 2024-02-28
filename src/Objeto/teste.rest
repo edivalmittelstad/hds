@@ -1,0 +1,73 @@
+### Login ###
+# @name login 
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+accept: application/json 
+ 
+{
+  "email": "edivalmitt@gmail.com",
+  "senha": "123"
+}
+
+####
+@TOKEN = {{login.response.body.$.token}}
+
+### Create ###   
+POST http://localhost:8000/objeto
+Content-Type: application/json  
+accept: application/json 
+Authorization: Bearer {{TOKEN}} 
+
+{
+  "nome": "Empresa 332",
+  "email": "empresa332@gmail.com",
+  "cnpj": "123456456321",
+  "status": "True"
+}
+
+### Update ### 
+PUT http://localhost:8000/objeto/cec27821-9b5b-41fe-8d25-0010a4c36ba3
+Content-Type: application/json
+accept: application/json 
+Authorization: Bearer {{TOKEN}} 
+ 
+{
+  "nome": "Empresa 45",
+  "email": "empresa45@gmail.com",
+  "cnpj": "12345645612",
+  "status": "True"
+}
+
+### Listar ###  
+GET http://localhost:8000/objeto
+Content-Type: application/json
+accept: application/json 
+Authorization: Bearer {{TOKEN}}
+
+### Pegar ###  
+GET http://localhost:8000/objeto/b162c6e3-9a82-4484-aa6b-7a933e1c5818
+Content-Type: application/json
+accept: application/json
+Authorization: Bearer {{TOKEN}}
+
+### Excluir ### 
+DELETE http://localhost:8000/objeto/0092eac9-6946-497b-a6a4-010d651f4274
+Content-Type: application/json
+accept: application/json
+Authorization: Bearer {{TOKEN}}
+
+### Upload ### 
+POST http://localhost:8000/objeto/upload
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="token"
+
+teste
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="Readme3.MD"
+Content-Type: text/plain
+
+TESte de arquivo
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+

@@ -1,0 +1,59 @@
+### Login ###
+# @name login
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+accept: application/json 
+ 
+{
+  "email": "edivalmitt@gmail.com",
+  "senha": "123"
+}
+
+####
+@TOKEN = {{login.response.body.$.token}}
+ 
+### Create ### 
+POST http://localhost:8000/usuario
+Content-Type: application/json 
+accept: application/json 
+
+{
+  "nome": "Edival3",
+  "email": "edivalmitt@gmail.com",
+  "senha": "123",
+  "cpf": "123456456112",
+  "foto": "dfd",
+  "status": "True",
+  "roles": ["MASTER", "SUPER_ADMIN" ]
+}
+
+### Update ###
+PUT http://localhost:8000/usuario/0bae120b-400a-4dda-8cfe-45fd8cb88787
+Content-Type: application/json
+accept: application/json 
+Authorization: Bearer {{TOKEN}}
+ 
+{
+  "email": "edivalmit@gmail.com",
+  "foto": "dfddfdf"
+}
+
+### Listar ### 
+GET http://localhost:8000/usuario
+Content-Type: application/json
+accept: application/json 
+Authorization: Bearer {{TOKEN}}
+
+
+### Pegar ###  
+GET http://localhost:8000/usuario/145fd9fc-46e2-41d9-bb9d-02d56666641e
+Content-Type: application/json
+accept: application/json
+Authorization: Bearer {{TOKEN}}
+
+
+### Excluir ### 
+DELETE http://localhost:8000/usuario/0a499fc2-1204-4b75-a5aa-c9631b83f587
+Content-Type: application/json
+accept: application/json
+Authorization: Bearer {{TOKEN}}
